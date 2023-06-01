@@ -4,6 +4,8 @@ public class Player {
     private int purse;
     private boolean inPenaltyBox;
 
+    private boolean isGettingOutOfPenaltyBox;
+
     public Player(String name, int place, int purse, boolean inPenaltyBox) {
         this.name = name;
         this.place = place;
@@ -25,5 +27,28 @@ public class Player {
 
     public boolean isInPenaltyBox() {
         return inPenaltyBox;
+    }
+
+    public void setPlace(int place) {
+        this.place = place;
+    }
+
+    public void setPurse(int purse) {
+        this.purse = purse;
+    }
+
+    public void setInPenaltyBox(boolean inPenaltyBox) {
+        this.inPenaltyBox = inPenaltyBox;
+    }
+
+    public void addCoin(){ purse++; }
+
+    public boolean isGettingOutOfPenaltyBox() {
+        return isGettingOutOfPenaltyBox;
+    }
+
+    public void setGettingOutOfPenaltyBox(boolean gettingOutOfPenaltyBox) {
+        isGettingOutOfPenaltyBox = gettingOutOfPenaltyBox;
+        inPenaltyBox = !gettingOutOfPenaltyBox;
     }
 }
