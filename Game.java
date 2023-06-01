@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Game {
 	ArrayList players = new ArrayList();
@@ -8,6 +9,7 @@ public class Game {
 	boolean[] inPenaltyBox = new boolean[6];
 
 	LinkedList popQuestions = new LinkedList();
+
 	LinkedList scienceQuestions = new LinkedList();
 	LinkedList sportsQuestions = new LinkedList();
 	LinkedList rockQuestions = new LinkedList();
@@ -15,12 +17,11 @@ public class Game {
 	int currentPlayer = 0;
 	boolean isGettingOutOfPenaltyBox;
 
-	public Game() {
-		for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+	public Game(List<Questions> topics, int numOfQuestions) {
+		for(int i=0; i<numOfQuestions;i++) {
+			for (Questions q : topics) {
+				q.addQuestion(i);
+			}
 		}
 	}
 
