@@ -1,5 +1,5 @@
 public class Question {
-    private String que;
+    private final String que;
 
     public Question(String que){
         this.que = que;

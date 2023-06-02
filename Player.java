@@ -49,6 +49,15 @@ public class Player {
 
     public void setGettingOutOfPenaltyBox(boolean gettingOutOfPenaltyBox) {
         isGettingOutOfPenaltyBox = gettingOutOfPenaltyBox;
+    }
+
+    public String gettingOutOfPenaltyBox(boolean gettingOutOfPenaltyBox) {
+        isGettingOutOfPenaltyBox = gettingOutOfPenaltyBox;
         inPenaltyBox = !gettingOutOfPenaltyBox;
+        if(gettingOutOfPenaltyBox){
+            return getName() + " is getting out of the penalty box";
+        }else{
+            return getName() + " is not getting out of the penalty box";
+        }
     }
 }

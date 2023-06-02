@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
 
     private String topic;
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
 
     public Category(String topic) {
         this.topic = topic;
@@ -17,8 +18,8 @@ public class Category {
         questions.add(question);
     }
 
-    public Question removeQuestion(){
-        return questions.remove(0);
+    public String removeQuestion(){
+        return questions.remove(0).getQue();
     }
 
 

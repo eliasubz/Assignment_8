@@ -13,6 +13,7 @@ public class GameRunner {
 		int placesOnBoard = 12;
 		int amountToWin = 6;
         List<Category> categories = new ArrayList<>();
+		List<Player> players = new ArrayList<>();
 
         Category pop = new Category("Pop");
         Category science = new Category("Science");
@@ -28,11 +29,11 @@ public class GameRunner {
 		Player leal = new Player("Leal", 0,0,false);
 		Player bobby = new Player("Bobby", 0,0,false);
 
-		Game aGame = new Game(categories, numOfQuestions, placesOnBoard, amountToWin);
+		players.add(ula);
+		players.add(leal);
+		players.add(bobby);
 
-		aGame.addPlayer(ula);
-		aGame.addPlayer(leal);
-		aGame.addPlayer(bobby);
+		Game aGame = new Game(categories, numOfQuestions, players, placesOnBoard, amountToWin);
 
 		Random rand = new Random();
 
