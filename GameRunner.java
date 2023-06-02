@@ -10,8 +10,6 @@ public class GameRunner {
 	public static void main(String[] args) {
 
         int numOfQuestions = 50;
-		int placesOnBoard = 12;
-		int amountToWin = 6;
         List<Category> categories = new ArrayList<>();
 		List<Player> players = new ArrayList<>();
 
@@ -33,7 +31,7 @@ public class GameRunner {
 		players.add(leal);
 		players.add(bobby);
 
-		Game aGame = new Game(categories, numOfQuestions, players, placesOnBoard, amountToWin);
+		Game aGame = new Game(categories, numOfQuestions, players);
 
 		Random rand = new Random();
 

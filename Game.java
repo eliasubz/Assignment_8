@@ -7,18 +7,20 @@ public class Game {
 	private List<Category> categories;
 	private int numOfQuestions;
 	private Player currentPlayer;
-	private int placesOnBoard;
-	private int amountToWin;
+	private int placesOnBoard = 12;
+	private int amountToWin = 6;
 
-	public Game(List<Category> categories, int numOfQuestions, List<Player> players, int placesOnBoard, int amountToWin) {
+	public Game(List<Category> categories, int numOfQuestions, List<Player> players) {
 		this.categories = categories;
 		this.numOfQuestions = numOfQuestions;
 		this.players = players;
-		this.placesOnBoard = placesOnBoard;
-		this.amountToWin = amountToWin;
 		this.currentPlayer = players.get(0);
 		setQuestions();
-		System.out.println(isPlayable());
+		if(isPlayable()){
+			System.out.println("Have a nice game!");
+		}else{
+			throw new RuntimeException("Sorry game not playable;3333");
+		}
 	}
 
 	public void setQuestions(){
@@ -29,13 +31,8 @@ public class Game {
 		}
 	}
 
-	public String isPlayable() {
-		boolean ok = (howManyPlayers() >= 2 && placesOnBoard%categories.size() == 0);
-		if(ok){
-			return "Have a nice game!";
-		}else{
-			return "Sorry game not playable!:333";
-		}
+	public boolean isPlayable() {
+		return (howManyPlayers() >= 2 && placesOnBoard % categories.size() == 0);
 	}
 
 
@@ -89,13 +86,13 @@ public class Game {
 		return categories.get(c);
 	}
 
-	public void switchPLayers(){
+	public void switchPlayers(){
 		currentPlayer = players.get((players.indexOf(currentPlayer)+1)%players.size());
 	}
 
 	public boolean wasCorrectlyAnswered() {
 		if (currentPlayer.isInPenaltyBox() && !currentPlayer.isGettingOutOfPenaltyBox()) {
-			switchPLayers();
+			switchPlayers();
 			return true;
 		} else {
 			System.out.println("Answer was correct!!!!");
@@ -106,7 +103,7 @@ public class Game {
 					+ " Gold Coins.");
 
 			boolean winner = didPlayerWin();
-			switchPLayers();
+			switchPlayers();
 			return winner;
 		}
 	}
@@ -116,7 +113,7 @@ public class Game {
 		System.out.println(currentPlayer.getName() + " was sent to the penalty box");
 		currentPlayer.setGettingOutOfPenaltyBox(true);
 
-		switchPLayers();
+		switchPlayers();
 
 		return true;
 	}
